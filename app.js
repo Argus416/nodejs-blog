@@ -7,7 +7,6 @@ const PORT = 3001;
 const expressListRoutes = require("express-list-routes");
 const path = require("path");
 const mongoose = require("mongoose");
-const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 
@@ -19,7 +18,6 @@ app.use(express.text());
 app.use(cors());
 
 app.use(cookieParser());
-app.use(session({ secret: "123" }));
 
 // app.use(async function (req, res, next) {
 // 	res.locals.success_msg = req.flash("success_msg");
