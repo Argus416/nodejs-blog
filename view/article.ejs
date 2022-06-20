@@ -1,0 +1,25 @@
+<%- include('partials/head') %>
+<%- include('components/navbar') %>
+<main class="container  mt-3">
+
+    <article>
+        <div class="header">
+            <div class="title">
+                <h1 class="h3"><%=article.titre %></h1>
+            </div>
+            <div class="btns">
+                <a href="/edit/<%=article.id %>" class="btn btn-primary">Editer</a>
+                <a href="/delete/<%=article.id %>" class="btn btn-danger">Supprimer</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <img src="../upload/<%=article.img%>" class="card-img-top" alt="<%=article.img %>">
+            <p><%=article.body %></p>
+        </div>
+
+    </article>
+
+
+</main>
+<%- include('partials/footer') %>

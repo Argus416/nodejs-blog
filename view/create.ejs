@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+<%- include('components/navbar') %>
+<main class="container mt-3">
+    <div>
+        <form encType="multipart/form-data" method="POST" action="/create" >
+            <div class="mb-2">
+                <label for="titre" class="form-label">Titre</label>
+                <input class="form-control" name="titre" id="titre" aria-describedby="titreHelp">
+            </div>
+
+            <div class="mb-2">
+                <label for="body" class="form-label">Content</label>
+                <textarea class="form-control" name="body" id="body" aria-label="With textarea"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Image d'article</label>
+                <input class="form-control" name="file" type="file" id="formFile">
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+        </form>
+    </div>
+
+</main>
+<%- include('partials/footer') %>
