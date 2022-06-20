@@ -10,9 +10,7 @@
             <div class="btns d-flex gap-2 mt-3">
                 <a href="/edit/<%=article._id %>" class="btn btn-primary">Editer</a>
              
-                <form action="/delete/<%=article._id %>" method="DELETE">
-                    <button class="btn btn-danger">Supprimer</button>
-                </form>
+                    <button onclick="deletePost(<%=article._id%>)" class="btn btn-danger">Supprimer</button>
             </div>
         </div>
 
@@ -26,3 +24,21 @@
 
 </main>
 <%- include('partials/footer') %>
+
+<script>
+    const deletePost = (id) =>{
+        $.ajax({
+            url: 'http://localhost:3001/delete',
+            method: 'DELETE',
+            data: {
+                id: id
+            },
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    }
+</script>
