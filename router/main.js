@@ -10,5 +10,7 @@ router.get("/view/:id", mainController.getArticle);
 router.get("/edit/:id", mainController.editPage);
 router.put("/edit/:id",multer, mainController.updatePost);
 
+router.delete("/delete/:id", mainController.deletePost);
+
 
 module.exports = router;

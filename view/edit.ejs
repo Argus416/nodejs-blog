@@ -2,7 +2,7 @@
 <%- include('components/navbar') %>
 <main class="container mt-3">
     <div>
-        <form encType="multipart/form-data" method="PUT" action="/edit/<%=article._id %> " >
+        <form encType="multipart/form-data" method="PUT" action="/edit/<%=article._id%>" >
             <div class="mb-2">
                 <label for="titre" class="form-label">Titre</label>
                 <input class="form-control" name="titre" id="titre" aria-describedby="titreHelp" value="<%=article.titre%> ">

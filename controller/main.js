@@ -97,3 +97,19 @@ exports.updatePost = async (req, res) => {
 		console.error(err);
 	}
 };
+
+
+exports.deletePost = async (req, res) => {
+	try {
+		const { id } = req.params;
+
+		await Article.deleteOne({_id: id});
+		res.send('post deleted');
+		
+		// const articleUpdate = await Article.updateOne(toUpdate)
+
+	} catch (err) {
+		console.error(err);
+	}
+};
+
