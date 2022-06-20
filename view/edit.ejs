@@ -1,30 +1,32 @@
-<%- include('partials/head') %>
-<%- include('components/navbar') %>
+<%- include('partials/head') %> <%- include('components/navbar') %>
 <main class="container mt-3">
-    <div>
-        <form encType="multipart/form-data" method="PUT" action="/edit/<%=article._id%>" >
-            <div class="mb-2">
-                <label for="titre" class="form-label">Titre</label>
-                <input class="form-control" name="titre" id="titre" aria-describedby="titreHelp" value="<%=article.titre%> ">
-            </div>
+	<div>
+		<form encType="multipart/form-data" method="POST" action="/edit/<%=article._id%>">
+			<div class="mb-2">
+				<label for="titre" class="form-label">Titre</label>
+				<input class="form-control" name="titre" id="titre" aria-describedby="titreHelp" value="<%=article.titre%> " />
+			</div>
 
-            <div class="mb-2">
-                <label for="body" class="form-label">Content</label>
-                <textarea class="form-control" name="body" id="body" aria-label="With textarea"><%=article.body %> </textarea>
-            </div>
+			<div class="mb-2">
+				<label for="body" class="form-label">Content</label>
+				<textarea class="form-control" name="body" id="body" aria-label="With textarea"><%=article.body %> </textarea>
+			</div>
 
-            <div class="mb-3">
-                <label for="formFile" class="form-label">Image d'article</label>
-                <input class="form-control" name="file" type="file" id="formFile">
-            </div>
+			<div class="mb-3">
+				<label for="formFile" class="form-label">Image d'article</label>
+				<input class="form-control" name="file" type="file" id="formFile" />
+			</div>
 
-            <% if (article.img) { %>
-                <img src="../upload/<%=article.img%>" alt="<%=article.titre %>">
-            <% } %>
+			<% if (article.img) { %>
+			<div class="img-article-container">
+				<img src="../upload/<%=article.img%>" class="img-article" alt="<%=article.titre %>" />
+			</div>
+			<% } %>
 
-            <button type="submit" class="btn btn-primary mt-3">Editer</button>
-        </form>
-    </div>
-
+			<div class="d-flex justify-content-center mt-3">
+				<button type="submit" class="btn btn-primary mt-3 w-50">Editer</button>
+			</div>
+		</form>
+	</div>
 </main>
 <%- include('partials/footer') %>

@@ -1,20 +1,21 @@
-<%- include('partials/head') %>
-<%- include('components/navbar') %>
-<main class="container  mt-3">
-
-    <div class="row">
-        <% articles.forEach(article => { %>
-            <div class="card" style="width: 18rem;">
-                <img src="../upload/<%=article.img%>" class="card-img-top" alt="<%=article.img %>">
-                <div class="card-body">
-                    <h5 class="card-title"><%= article.titre %></h5>
-                    <p class="card-text"><%= article.body %></p>
-                    <a href="/view/<%=article.id %>" class="btn btn-primary">Voir plus</a>
-                </div>
-            </div>
-        <% }) %>
-    </div>
-
-
+<%- include('partials/head') %> <%- include('components/navbar') %>
+<main class="container mt-3">
+	<div class="row">
+		<% if (articles.length) { %> <% articles.forEach(article => { %>
+		<div class="card" style="width: 18rem">
+			<img src="../upload/<%=article.img%>" class="card-img-top" alt="<%=article.img %>" />
+			<div class="card-body">
+				<h5 class="card-title"><%= article.titre %></h5>
+				<p class="card-text"><%= article.body %></p>
+				<a href="/view/<%=article.id %>" class="btn btn-primary">Voir plus</a>
+			</div>
+		</div>
+		<% }) %> <% } else {%>
+		<div>
+			<h1 class="mb-4">Aucun article n'est publié</h1>
+			<a href="/create" class="btn btn-primary">Créer mon premier article</a>
+		</div>
+		<% } %>
+	</div>
 </main>
 <%- include('partials/footer') %>

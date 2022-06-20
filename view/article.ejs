@@ -1,44 +1,41 @@
-<%- include('partials/head') %>
-<%- include('components/navbar') %>
-<main class="container  mt-3">
+<%- include('partials/head') %> <%- include('components/navbar') %>
+<main class="container mt-3" id="view-article">
+	<article>
+		<div class="header d-flex justify-content-between align-items-center">
+			<div class="title">
+				<h1 class="h3 mb-0"><%=article.titre %></h1>
+			</div>
+			<div class="btns d-flex gap-2 mt-3">
+				<a href="/edit/<%=article._id %>" class="btn btn-primary">Editer</a>
 
-    <article>
-        <div class="header">
-            <div class="title">
-                <h1 class="h3"><%=article.titre %></h1>
-            </div>
-            <div class="btns d-flex gap-2 mt-3">
-                <a href="/edit/<%=article._id %>" class="btn btn-primary">Editer</a>
-             
-                    <button onclick="deletePost(<%=article._id%>)" class="btn btn-danger">Supprimer</button>
-            </div>
-        </div>
+				<button onclick="deletePost('<%=article._id%>')" class="btn btn-danger">Supprimer</button>
+			</div>
+		</div>
 
-        <div class="content">
-            <img src="../upload/<%=article.img%>" class="card-img-top" alt="<%=article.img %>">
-            <p><%=article.body %></p>
-        </div>
-
-    </article>
-
-
+		<div class="content">
+			<div class="img-article-container my-3">
+				<img src="../upload/<%=article.img%>" class="card-img-top img-article" alt="<%=article.img %>" />
+			</div>
+			<p><%=article.body %></p>
+		</div>
+	</article>
 </main>
 <%- include('partials/footer') %>
 
 <script>
-    const deletePost = (id) =>{
-        $.ajax({
-            url: 'http://localhost:3001/delete',
-            method: 'DELETE',
-            data: {
-                id: id
-            },
-            success: function(data) {
-                console.log(data);
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
-    }
+	const deletePost = (id) => {
+		console.log(id);
+		$.ajax({
+			url: `http://localhost:3001/delete/${id}`,
+			method: "DELETE",
+
+			success: function (data) {
+				console.log(data);
+				window.location.href = "/";
+			},
+			error: function (err) {
+				console.error(err);
+			},
+		});
+	};
 </script>
