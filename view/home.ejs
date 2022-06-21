@@ -1,6 +1,6 @@
 <%- include('partials/head') %> <%- include('components/navbar') %>
-<main class="container mt-3">
-	<div class="row">
+<main class="container mt-3" id="home">
+	<div class="wrapper">
 		<% if (articles.length) { %> <% articles.forEach(article => { %>
 		<div class="card" style="width: 18rem">
 			<img src="../upload/<%=article.img%>" class="card-img-top" alt="<%=article.img %>" />

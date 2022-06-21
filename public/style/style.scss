@@ -1,0 +1,27 @@
+#home{
+	.wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		gap : 10px;
+		.card{
+			width: calc(98% / 4) !important;
+			.card-img-top{
+				width: 250px;
+				height: 250px;
+				object-fit: contain;
+				margin: auto;
+			}
+		}
+	}
+}
+
+.img-article-container {
+	text-align: center;
+}
+.img-article {
+	max-width: 250px;
+}
+
+.swal2-confirm{
+	margin-left: 10px;
+}

@@ -5,7 +5,7 @@ exports.getHome = async (req, res) => {
 	try {
 		const articles = await Article.find();
 
-		res.render("../view/main.ejs", { articles: articles, pageName: "home" });
+		res.render("../view/home.ejs", { articles: articles, pageName: "home" });
 	} catch (err) {
 		console.error(err);
 	}

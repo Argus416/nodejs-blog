@@ -11,7 +11,7 @@ const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const os =  require('os')
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.text());
