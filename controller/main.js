@@ -5,7 +5,7 @@ exports.getHome = async (req, res) => {
 	try {
 		const articles = await Article.find();
 
-		res.render("../view/home.ejs", { articles: articles, pageName: "home" });
+		res.render("../views/home.ejs", { articles: articles, pageName: "home" });
 	} catch (err) {
 		console.error(err);
 	}
@@ -23,7 +23,7 @@ exports.getArticle = async (req, res) => {
 
 exports.getCreate = async (req, res) => {
 	try {
-		res.render("../view/create.ejs", { pageName: "create" });
+		res.render("../views/create.ejs", { pageName: "create" });
 	} catch (err) {
 		console.error(err);
 	}
@@ -52,8 +52,8 @@ exports.editPage = async (req, res) => {
 	try {
 		const { id } = req.params;
 		const article = await Article.findById(id);
-
-		res.render("../view/edit.ejs", { article, pageName: "edit" });
+	
+		res.render("../views/edit.ejs", { article, pageName: "edit" });
 	} catch (err) {
 		console.error(err);
 	}

@@ -9,9 +9,11 @@ const path = require("path");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
-const os =  require('os')
+const fs = require('fs');
 
 app.use(express.static("public"));
+app.set("views", path.join(__dirname, "views"));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.text());
@@ -27,12 +29,12 @@ app.use(cookieParser());
 // 	next();
 // });
 
-const errorController = require("./controller/error");
 const mainRouter = require("./router/main");
 
 app.use("/", mainRouter);
+
 app.use("*", (req, res) => {
-	res.render("../view/errors/404.ejs", { pageName: "404" });
+	res.status(404).render("../views/errors/404.ejs", { pageName: "404" });
 });
 mongoose
 	.connect(process.env.DB_CONNECTION)

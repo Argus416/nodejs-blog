@@ -20,7 +20,7 @@
 			<% 
 				const articleImg = {img : "https://placekitten.com/640/360", titre:""};
 				if (article.img !== "") {
-					articleImg.img =  `../upload/${article.img}`;
+					articleImg.img =  `/upload/${article.img}`;
 					articleImg.titre = article.titre;
 				}
 			%>
