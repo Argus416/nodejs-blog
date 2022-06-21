@@ -15,7 +15,7 @@ exports.getArticle = async (req, res) => {
 	try {
 		const { id } = req.params;
 		const article = await Article.findById(id);
-		res.render("../view/article.ejs", { article, pageName: "article" });
+		res.render("../views/article.ejs", { article, pageName: "article" });
 	} catch (err) {
 		console.error(err);
 	}
@@ -96,7 +96,20 @@ exports.deletePost = async (req, res) => {
 	try {
 		const { id } = req.params;
 
+
+		const article = await Article.findById(id);
+		const oldImage = article.img;
+
+		if(oldImage !== ""){
+			const imageExist = fs.existsSync(`public/upload/${oldImage}`);
+			// Delete old image if it exists
+			if (imageExist && oldImage !== "") {
+				fs.unlinkSync(`public/upload/${oldImage}`);
+			}
+		}
+
 		await Article.deleteOne({ _id: id });
+
 		res.send("post deleted");
 
 		// const articleUpdate = await Article.updateOne(toUpdate)

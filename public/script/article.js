@@ -18,6 +18,7 @@ const deletePost = (id) => {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
+
             $.ajax({
                 url: `http://localhost:3001/delete/${id}`,
                 method: "DELETE",
@@ -25,8 +26,8 @@ const deletePost = (id) => {
                 success: function (data) {
                     console.log(data);
                     swalWithBootstrapButtons.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
+                        'Supprimé!',
+                        'L\'article a été supprimer avec succès.',
                         'success'
                     )
                     setTimeout(() => {
@@ -37,8 +38,6 @@ const deletePost = (id) => {
                     console.error(err);
                 },
             });
-
-
         } 
     })
 
