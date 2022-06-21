@@ -74,17 +74,16 @@ exports.updatePost = async (req, res) => {
 		if (file !== undefined) {
 			const article = await Article.findById(id);
 			const oldImage = article.img;
-			const imageExist = fs.statSync(`public/upload/${oldImage}`);
-			console.log(imageExist, oldImage, "image **********************************");
-			
+			const imageExist = fs.existsSync(`public/upload/${oldImage}`);
 			toUpdate.img = file;
+			// Delete old image if it exists
 			if (imageExist && oldImage !== "") {
 				fs.unlinkSync(`public/upload/${oldImage}`);
 			}
 		}
 
 		// Update article
-		await Article.updateOne(toUpdate);
+		await Article.updateOne({_id : id},toUpdate);
 
 		res.redirect("/");
 	} catch (err) {
