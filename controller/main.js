@@ -73,11 +73,10 @@ exports.updatePost = async (req, res) => {
 		// Delete old image if new image is uploaded
 		if (file !== undefined) {
 			const article = await Article.findById(id);
-			console.log(article);
 			const oldImage = article.img;
 			const imageExist = fs.statSync(`public/upload/${oldImage}`);
-			console.log(imageExist, oldImage, "image");
-
+			console.log(imageExist, oldImage, "image **********************************");
+			
 			toUpdate.img = file;
 			if (imageExist && oldImage !== "") {
 				fs.unlinkSync(`public/upload/${oldImage}`);

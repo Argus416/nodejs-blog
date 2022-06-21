@@ -22,20 +22,4 @@
 </main>
 <%- include('partials/footer') %>
 
-<script>
-	const deletePost = (id) => {
-		console.log(id);
-		$.ajax({
-			url: `http://localhost:3001/delete/${id}`,
-			method: "DELETE",
-
-			success: function (data) {
-				console.log(data);
-				window.location.href = "/";
-			},
-			error: function (err) {
-				console.error(err);
-			},
-		});
-	};
-</script>
+<script src="../script/article.js"></script>
